@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda 2030 | Futuro Sostenible</title>
+    
+    <!-- DISEÑO CSS COMPLETAMENTE INTEGRADO -->
+    <style>
+        :root {
+            --primary: #00b894;
+            --secondary: #0984e3;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --white: #ffffff;
+            --accent: #fdcb6e;
+            --danger: #d63031;
+            --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        .text-center { text-align: center; }
+        .bg-light { background-color: var(--light); }
+
+        .section-number {
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-desc {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: #636e72;
+        }
+
+        /* Navbar & Hero */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero {
+            background: linear-gradient(135deg, #6c5ce7, #0984e3);
+            color: var(--white);
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .hero-content { max-width: 600px; }
+        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin: 15px 0; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+        .tag { background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-weight: bold; }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .hero-visual .orb { font-size: 8rem; animation: floating 4s ease-in-out infinite; }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Split Layout */
+        .layout-split { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+        .text-block { flex: 1; min-width: 300px; }
+        .text-block p { margin-bottom: 15px; color: #4a4a4a; }
+        .counter-box { display: flex; gap: 20px; flex: 1; min-width: 300px; }
+        .counter-card { background: var(--light); padding: 40px 20px; border-radius: 20px; text-align: center; flex: 1; box-shadow: 0 8px 20px rgba(0,0,0,0.02); }
+        .counter-card h3 { font-size: 3.5rem; color: var(--secondary); margin-bottom: 10px; }
+
+        /* Grid de ODS */
+        .ods-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+        .ods-card {
+            color: var(--white); padding: 25px 20px; border-radius: 15px; cursor: pointer; font-weight: bold;
+            text-align: left; height: 160px; display: flex; flex-direction: column; justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .ods-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .ods-number { font-size: 1.2rem; opacity: 0.8; }
+        .ods-title { font-size: 1.1rem; line-height: 1.3; }
+
+        /* Asistente IA Chat Box */
+        .chat-wrapper { display: flex; background: var(--white); border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); overflow: hidden; flex-wrap: wrap; }
+        .chat-sidebar { flex: 1; min-width: 300px; background: #1e272e; color: var(--white); padding: 40px; }
+        .chat-sidebar h2 { color: var(--white); font-size: 2rem; }
+        .chat-sidebar p { opacity: 0.8; margin-bottom: 25px; }
+        .quick-chips { display: flex; flex-direction: column; gap: 12px; }
+        .quick-chips button { background: rgba(255,255,255,0.1); color: var(--white); border: none; padding: 12px 20px; border-radius: 12px; text-align: left; cursor: pointer; transition: background 0.2s; font-weight: 500; }
+        .quick-chips button:hover { background: var(--primary); }
+        .chat-box { flex: 2; min-width: 400px; display: flex; flex-direction: column; height: 500px; background: #f1f2f6; }
+        .chat-header { background: var(--white); padding: 15px 25px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #e4e7eb; }
+        .status-dot { width: 12px; height: 12px; background: #2ecc71; border-radius: 50%; }
+        .chat-messages { flex: 1; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .msg { max-width: 75%; padding: 12px 18px; border-radius: 16px; font-size: 0.95rem; }
+        .msg.bot { background: var(--white); align-self: flex-start; border-top-left-radius: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .msg.user { background: var(--secondary); color: var(--white); align-self: flex-end; border-top-right-radius: 0; }
+        .chat-input-area { background: var(--white); padding: 15px 25px; display: flex; gap: 15px; border-top: 1px solid #e4e7eb; }
+        .chat-input-area input { flex: 1; border: 1px solid #ced4da; padding: 12px 20px; border-radius: 30px; outline: none; font-size: 1rem; }
+        .chat-input-area button { background: var(--primary); color: var(--white); border: none; padding: 0 25px; border-radius: 30px; font-weight: bold; cursor: pointer; }
+
+        /* Juegos */
+        .game-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .tab-btn { padding: 12px 25px; border: none; background: var(--white); color: var(--dark); font-weight: 700; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s; }
+        .tab-btn.active, .tab-btn:hover { background: var(--primary); color: var(--white); }
+        .game-container { background: var(--white); border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); min-height: 350px; }
+        .game-window { display: none; }
+        .game-window.active { display: block; }
+
+        .quiz-option { display: block; width: 100%; max-width: 500px; margin: 10px auto; padding: 14px; border: 2px solid #e4e7eb; border-radius: 12px; background: var(--white); cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.2s; }
+        .quiz-option:hover { background: #f1f2f6; border-color: #b2bec3; }
+
+        .sopa-layout { display: flex; justify-content: center; gap: 40px; margin-top: 25px; flex-wrap: wrap; }
+        .sopa-grid { display: grid; grid-template-columns: repeat(10, 35px); gap: 5px; background: #dfe6e9; padding: 10px; border-radius: 10px; }
+        .sopa-cell { width: 35px; height: 35px; background: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; border-radius: 5px; cursor: pointer; user-select: none; }
+        .sopa-cell.found { background: #ffeaa7; color: #d63031; }
+        .sopa-words-list span { display: block; margin: 8px 0; font-size: 1.1rem; font-weight: bold; color: #b2bec3; }
+        .sopa-words-list span.found-word { color: #2ecc71; text-decoration: line-through; }
+
+        .palabra-display { font-size: 2rem; letter-spacing: 10px; margin: 20px 0; font-weight: bold; }
+        .teclado { display: flex; flex-wrap: wrap; gap: 8px; max-width: 600px; margin: 20px auto; justify-content: center; }
+        .teclado button { width: 40px; height: 40px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; background: #fff; border-radius: 5px; }
+        .teclado button:disabled { background: #dfe6e9; cursor: not-allowed; }
+
+        /* Integrantes */
+        .team-section { background: linear-gradient(135deg, #2c3e50, #1e272e); color: var(--white); }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; }
+        .team-card { background: rgba(255,255,255,0.05); padding: 30px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
+        .team-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
